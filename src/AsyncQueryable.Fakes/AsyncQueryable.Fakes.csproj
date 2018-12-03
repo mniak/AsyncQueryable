@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AsyncQueryable\AsyncQueryable.csproj"/>
+    <ProjectReference Include="..\AsyncQueryable\AsyncQueryable.csproj" />
   </ItemGroup>
 
 </Project>
