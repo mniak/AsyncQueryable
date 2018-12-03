@@ -401,6 +401,16 @@ namespace System.Linq
             return (IAsyncQueryable<TSource>)Queryable.Skip(source, count);
         }
 
+        public static Task<IQueryable<TSource>> SkipAsync<TSource>(this IAsyncQueryable<TSource> source, int count, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return ((IAsyncQueryProvider)source.Provider).ExecuteAsync<IQueryable<TSource>>(
+                Expression.Call(
+                    GetMethodInfo<IQueryable<TSource>, int, IQueryable<TSource>>(Queryable.Skip, source, count),
+                    source.Expression,
+                    Expression.Constant(count)),
+                cancellationToken);
+        }
+
         public static Task<decimal> SumAsync(this IAsyncQueryable<decimal> source, CancellationToken cancellationToken = default(CancellationToken))
         {
             return ((IAsyncQueryProvider)source.Provider).ExecuteAsync<decimal>(
